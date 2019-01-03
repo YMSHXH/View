@@ -1,6 +1,7 @@
 package com.example.king.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -14,6 +15,7 @@ public class MyView extends View {
     private int circleX;
     private int circleY;
     private int radius = 100;//半径
+    private int color = Color.RED;
 
     public MyView(Context context) {
         this(context,null);
@@ -25,7 +27,7 @@ public class MyView extends View {
 
     public MyView(Context context,  AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(context,attrs);
     }
 
 //    public MyView(Context context,  AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -34,11 +36,18 @@ public class MyView extends View {
 
     /**
      * 初始化对象的方法
+     * @param context
+     * @param attrs
      */
-    private void init(){
+    private void init(Context context, AttributeSet attrs){
+        //对自定义属性初始化
+        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.MyView);
+        radius = typedArray.getDimensionPixelSize(R.styleable.MyView_radius,100);
+        color = typedArray.getColor(R.styleable.MyView_color,Color.BLUE);
+
         //定义画笔
         paint = new Paint();
-        paint.setColor(Color.RED);//定义画笔颜色
+        paint.setColor(color);//定义画笔颜色
         paint.setAntiAlias(true); //抗锯齿
         //paint.setStyle(Paint.Style.FILL);//实心圆
         paint.setStyle(Paint.Style.STROKE);

@@ -15,9 +15,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mMyView = (MyView) findViewById(R.id.myView);
+        //mMyView = (MyView) findViewById(R.id.myView);
         //重绘
         //mMyView.invalidate();//重绘，直接触发onDraw()方法，只能在主线程通知重绘
         //mMyView.postInvalidate();//重绘，直接触发onDraw()方法，面试题，区别，子线程可以通知重绘
     }
+
+
 }
