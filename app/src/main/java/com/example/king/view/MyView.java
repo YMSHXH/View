@@ -45,6 +45,11 @@ public class MyView extends View {
         radius = typedArray.getDimensionPixelSize(R.styleable.MyView_radius,100);
         color = typedArray.getColor(R.styleable.MyView_color,Color.BLUE);
 
+        //初始化后
+        if (typedArray != null){
+            typedArray.recycle();//回收资源
+        }
+
         //定义画笔
         paint = new Paint();
         paint.setColor(color);//定义画笔颜色
